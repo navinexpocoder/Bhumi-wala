@@ -1,0 +1,107 @@
+/* Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap");
+
+/* Tailwind import — @config loads theme extensions (primary, muted, fonts, etc.) */
+@import "tailwindcss";
+@config "./tailwind.config.js";
+
+/* Custom font */
+@font-face {
+  font-family: "DomineWebRegular";
+  src: url("/fonts/DomineWebRegular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --b1: #1B4332;        /* dark green */
+  --b1-mid: #2D6A4F;    /* medium green */
+  --b2: #95D5B2;        /* light green */
+  --b2-soft: #D8F3DC;   /* very light green */
+  --fg: #F8F9F1;        /* off-white */
+  --white: #ffffff;
+  --brown: #6D4C41;
+
+  /* Semantic status colors (brand-aligned) */
+  --success: var(--b1);
+  --success-bg: var(--b2-soft);
+  --error: #b91c1c;
+  --error-bg: #fef2f2;
+  --warning: #b45309;
+  --warning-bg: #fffbeb;
+  --muted: var(--brown);
+}
+
+/* ===== BASE STYLES ===== */
+@layer base {
+  body {
+    @apply font-serif;
+    font-variant-numeric: lining-nums tabular-nums;
+    font-feature-settings: "lnum" 1, "tnum" 1;
+    overflow-x: hidden;
+  }
+}
+
+/* ===== GLOBAL FOOTER COLOR ===== */
+@layer components {
+  .footer-bg {
+    background: linear-gradient(
+      135deg,
+      var(--b2) 0%,
+      var(--b1) 60%
+    );
+    color: var(--fg);
+  }
+
+   .glass-card {
+  @apply relative rounded-2xl p-6 h-fit
+    bg-white/60
+    backdrop-blur-md
+    border border-white/40
+    text-[#1B4332];
+}
+
+  .glass-btn {
+    @apply px-4 py-2 rounded-full border
+      border-[#2D6A4F] text-[#2D6A4F]
+      text-xs font-semibold
+      hover:bg-[#2D6A4F] hover:text-white
+      transition;
+  }
+}
+
+/* ===== HEADER STYLES ===== */
+@layer components {
+  .header-bg {
+    background: linear-gradient(
+      to left ,
+      var(--b2) 0%,
+    var(--b1-mid) 50%,
+    var(--b1) 100%
+    );
+    color: var(--fg);
+  }
+
+  .text-brand {
+    color: var(--b2);
+  }
+
+  .btn-brand {
+    background-color: var(--b2);
+    color: var(--b1);
+  }
+
+  .btn-brand:hover {
+    background-color: var(--b1-mid);
+    color: var(--fg);
+  }
+}
+
+/* ===== UTILITIES ===== */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
